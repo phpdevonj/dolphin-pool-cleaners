@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/base/jquery-ui.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <!--  -->
+
+    <section class="wizard-section container">
+      <div class="row no-gutters">
+        <div class="col-lg-12 col-md-12">
+          <div class="form-wizard">
+            <form action="" method="post" role="form">
+              <div class="form-wizard-header">
+                <ul class="list-unstyled form-wizard-steps clearfix">
+                  <li class="active"><span>1</span></li>
+                  <li><span>2</span></li>
+                  <li><span>3</span></li>
+                  <li><span>4</span></li>
+                  <li><span>5</span></li>
+                </ul>
+              </div>
+              <fieldset class="wizard-fieldset show">
+                <h5 class="text-center heading">Inground OR Above Ground</h5>
+                <div class="card-body">
+                  <ul class="values" id="pooltype">
+                    <li>
+                      <button onclick="poolType(this)" data-attr="Inground" type="button" class="">
+                        <label class="control-container">
+                          <img src="Images/in_ground.png" />
+                        </label>
+                        <span class="w-100 pool_type" id="Inground"> In Ground </span>
+                      </button>
+                    </li>
+                    <li>
+                      <button onclick="poolType(this)" data-attr="Above ground" type="button" class="">
+                        <label class="control-container">
+                          <img src="Images/above_ground.png" />
+                        </label>
+                        <span class="w-100 pool_type"> Above Ground </span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-group text-center mt-5 clearfix">
+                  <button
+                    type="button"
+                    id="step1"
+                    class="form-wizard-next-btn float-right disable border-0"
+                  >
+                    Next
+                  </button>
+                </div>
+              </fieldset>
+              <fieldset class="wizard-fieldset">
+                <h5 class="text-center heading">
+                  Round Rectangle Freeform (data here will not be used)
+                </h5>
+                <div class="round_rectangle">
+                  <div class="card-default-image">
+                    <img
+                      src="Images/pool_shape_default.webp"
+                      class="default active"
+                    />
+                    <img src="Images/round.png" class="round" />
+                    <img src="Images/rectangular.png" class="rectangular" />
+                    <img src="Images/free_shape.png" class="free_shape" />
+                  </div>
+                  <ul class="d-flex tab_btn">
+                    <li class="round">
+                      <button onclick="shapePool('Round')" type="button">Round</button>
+                    </li>
+                    <li class="rectangular">
+                      <button onclick="shapePool('Rectangular')" type="button">Rectangular</button>
+                    </li>
+                    <li class="free_shape">
+                      <button onclick="shapePool('Free Shape')" type="button">Free Shape</button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-group text-center mt-5 clearfix">
+                  <button
+                    type="button"
+                    class="form-wizard-previous-btn float-left border-0"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    class="form-wizard-next-btn float-right disable border-0"
+                  >
+                    Next
+                  </button>
+                </div>
+              </fieldset>
+
+              <fieldset class="wizard-fieldset">
+                <h5 class="text-center heading">
+                  Maximum Dimension or Length (data here will not be used)
+                </h5>
+                <div>
+                  <div class="metrics-images">
+                    <div class="card-default-image">
+                      <img
+                        src="Images/pool_size_default.png"
+                        class="default active"
+                      />
+                      <img src="Images/rectangular.png" class="rect_class" />
+                      <img src="Images/round.png" class="round_class" />
+                    </div>
+                  </div>
+                  <div class="slider-label range_slider_count fw-bold mb-4">
+                    <p>
+                      Use the scroll bar to choose the range of your pool size
+                    </p>
+                    <span class="d-none">33 ft.</span>
+                  </div>
+                  <div id="resolution-slider">
+                    <div
+                      class="ui-slider-range ui-corner-all ui-widget-header ui-slider-range-min"
+                    ></div>
+                    <div class="resolution-preview" id="resolution-preview"></div>
+                  </div>
+                  <div class="button-switch-container">
+                    <div class="button b2" id="button-switch">
+                      <input type="checkbox" class="checkbox" />
+                      <div class="knobs" data-content="Diameter">
+                        <span>Length</span>
+                      </div>
+                      <div class="layer"></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group text-center mt-5 clearfix">
+                  <button
+                    type="button"
+                    class="form-wizard-previous-btn float-left border-0"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    onclick="getDimentions(this)"
+                    type="button"
+                    class="form-wizard-next-btn float-right disable border-0"
+                  >
+                    Next
+                  </button>
+                </div>
+              </fieldset>
+
+              <fieldset class="wizard-fieldset">
+                <h5 class="text-center heading">
+                  Floor Floor/Wall Floor/Walls/Waterline
+                </h5>
+                <div class="floor_wall">
+                  <div class="card-default-image">
+                    <img
+                      src="Images/cleaning_coverage_default.png"
+                      class="default active"
+                    />
+                    <img src="Images/floors.png" class="round" />
+                    <img
+                      src="Images/floors_and_walls.png"
+                      class="rectangular"
+                    />
+                    <img
+                      src="Images/floors,_walls_and_waterline.png"
+                      class="free_shape"
+                    />
+                  </div>
+                  <ul class="d-flex tab_btn">
+                    <li class="round">
+                      <button onclick="floorType('Floor')" type="button">Floor</button>
+                    </li>
+                    <li class="rectangular">
+                      <button onclick="floorType('Floor and Walls')" type="button">
+                        <label>Floor and Walls</label>
+                      </button>
+                    </li>
+                    <li class="free_shape">
+                      <button onclick="floorType('Floor, Walls and Waterline')" type="button">
+                        <label>Floor, Walls and Waterline</label>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-group text-center mt-5 clearfix">
+                  <button
+                    type="button"
+                    class="form-wizard-previous-btn float-left border-0"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    type="button"
+                    class="form-wizard-next-btn float-right disable border-0"
+                  >
+                    Next
+                  </button>
+                </div>
+              </fieldset>
+
+              <fieldset class="wizard-fieldset">
+                <h5 class="text-center heading">
+                    What type of dirt and debris would you like to remove?
+                </h5>
+                <div class="card-body">
+                  <ul class="values">
+                    <li>
+                      <button onclick="dirtAndDebris('Large')" type="button" class="">
+                        <label class="control-container">
+                          <img src="Images/yes.png" />
+                        </label>
+                        <span class="w-100">
+                          Large
+                        </span>
+                      </button>
+                    </li>
+                    <li>
+                      <button onclick='dirtAndDebris("Small")' type="button" class="">
+                        <label class="control-container">
+                          <img src="Images/no.png" />
+                        </label>
+                        <span class="w-100"> Small </span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+                <div class="form-group text-center mt-5 clearfix">
+                  <button
+                    type="button"
+                    class="form-wizard-previous-btn float-left border-0"
+                  >
+                    Previous
+                  </button>
+                  <button
+                    id="submitForm"
+                    type="button"
+                    class="form-wizard-submit float-right disable border-0"
+                  >
+                    Submit
+                  </button>
+                </div>
+              </fieldset>
+              <fieldset class="wizard-fieldset product_listing">
+                <div class="product_listing_header">
+                  <h5 class="text-center heading">
+                    We Found The Best Dolphin Cleaners For You
+                  </h5>
+                  <p class="mb-2">Based on your answers</p>
+                  <ul>
+                    <li>Pool Type: <span id="poolType"></span></li>
+                    <li>Pool Shape: <span id="poolShape"></span></li>
+                    <li>Pool Size: <span id="poolSize"></li>
+                    <li>Cleaning Coverage: <span id="poolCoverage"></span></li>
+                    <li>Control with App: <span id="poolControl"></span></li>
+                    <li>Where to buy: Local store  <span id="poolType"></span></li>
+                  </ul>
+                </div>
+                <div class="row mt-4" id="product_list">
+                  <div class="col-md-3 dolphin_premier product">
+                    <div class="product_type">
+                      <div
+                        class="product_head d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <i class="fa fa-wifi"></i>
+                        <div
+                          class="product-tile-top d-flex justify-content-between align-items-center"
+                        >
+                          <div class="product-tile-top-match">
+                            <img
+                              class="icon-top-match mr-1"
+                              src="Images/okay.png"
+                              alt="Top Match"
+                            />
+                            Top Match For You
+                          </div>
+                        </div>
+                      </div>
+                      <div class="image-container">
+                        <a href="#" target="_blank">
+                          <img class="dolphin_premier_img" src="Images/machine.png" alt="" />
+                        </a>
+                      </div>
+                      <div class="tile-body">
+                        <h6 class="fw-bold">Dolphin Premier</h6>
+                        <p>Dolphin Premier is part of the ProLine, designed for the most demanding pool owners. Premier has three key advantages. First, Premier is the only pool robot with Multimedia. Choose from standard fine filters, high capacity leaf and debris bags, disposable debris bags and the pinnacle of robot filtration, the NanoFilter. Most robotic pools cleaners contain a very basic mesh screen, but the best dolphin robotic pool cleaners have Nanofilters onboard. This is a genuine pleated filter capable of capturing the smallest debris. Second, Premier attacks the waterline plus it scrubs the area over the waterline. Third, Premier has the longest warranty Dolphin offers at 3 years.</p>
+                      </div>
+                      <div class="fw-bold">$149</div>
+                      <a class="product_more" href="#">Learn More</a>
+                    </div>
+                  </div>
+                  <div class="col-md-3 dolphin_sigma product">
+                    <div class="product_type">
+                      <div
+                        class="product_head d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <i class="fa fa-wifi"></i>
+                        <div
+                          class="product-tile-top d-flex justify-content-between align-items-center"
+                        >
+                          <div class="product-tile-top-match">
+                            <img
+                              class="icon-top-match mr-1"
+                              src="Images/okay.png"
+                              alt="Top Match"
+                            />
+                            Top Match For You
+                          </div>
+                        </div>
+                      </div>
+                      <div class="image-container">
+                        <a href="#" target="_blank">
+                          <img class="dolphin_sigma_img" src="Images/machine.png" alt="" />
+                        </a>
+                      </div>
+                      <div class="tile-body">
+                        <h6 class="fw-bold">Dolphin Sigma</h6>
+                        <p>Dolphin Sigma is part of the ProLine Series, designed for the most demanding pool owners. Sigma has four important differences. First, Sigma includes standard fine filtration like other Dolphin units but Sigma also adds the pinnacle of robot filtration, the NanoFilter. Most robotic pools cleaners contain a very basic mesh screen, but Sigma boasts genuine pleated filters capable of capturing the smallest debris. Second, Sigma cleans both the waterline and scrubs the area over the waterline. Third, Sigma is designed on the commercial platform so you get not two but three commercial grade motors and a gyroscope onboard the microprocessor for ultimate suction power. Fourth, Sigma boasts one of the longest warranties at three years.</p>
+                      </div>
+                      <div class="fw-bold">$149</div>
+                      <a class="product_more" href="#">Learn More</a>
+                    </div>
+                  </div>
+                  <div class="col-md-3 dolphin_quantum product">
+                    <div class="product_type">
+                      <div
+                        class="product_head d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <i class="fa fa-wifi"></i>
+                        <div
+                          class="product-tile-top d-flex justify-content-between align-items-center"
+                        >
+                          <div class="product-tile-top-match">
+                            <img
+                              class="icon-top-match mr-1"
+                              src="Images/okay.png"
+                              alt="Top Match"
+                            />
+                            Top Match For You
+                          </div>
+                        </div>
+                      </div>
+                      <div class="image-container">
+                        <a href="#" target="_blank">
+                          <img class="dolphin_quantum_img" src="Images/machine.png" alt="" />
+                        </a>
+                      </div>
+                      <div class="tile-body">
+                        <h6 class="fw-bold">Dolphin Quantum</h6>
+                        <p>Dolphin Quantum is part of the ProLine, designed for the most demanding pool owners. Quantum has three key advantages. First, Quantum includes the standard fine filters but also adds the d the pinnacle of robot filtration, the NanoFilter. Most robotic pools cleaners contain a very basic mesh screen, but Quantum boast Nanofilters onboard. This is a genuine pleated filter capable of capturing the smallest debris. Second, Quantum attacks the waterline plus it scrubs the area over the waterline. Third, Quantum’s large format easy to clean Nanofilter is the largest and quickest to clean.</p>
+                      </div>
+                      <div class="fw-bold">$149</div>
+                      <a class="product_more" href="#">Learn More</a>
+                    </div>
+                  </div>
+                  <div class="col-md-3 dolphin_cayman product">
+                    <div class="product_type">
+                      <div
+                        class="product_head d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <i class="fa fa-wifi"></i>
+                        <div
+                          class="product-tile-top d-flex justify-content-between align-items-center"
+                        >
+                          <div class="product-tile-top-match">
+                            <img
+                              class="icon-top-match mr-1 dolphin_cayman_img"
+                              src="Images/okay.png"
+                              alt="Top Match"
+                            />
+                            Top Match For You
+                          </div>
+                        </div>
+                      </div>
+                      <div class="image-container">
+                        <a href="#" target="_blank">
+                          <img class="dolphin_cayman_img" src="Images/machine.png" alt="" />
+                        </a>
+                      </div>
+                      <div class="tile-body">
+                        <h6 class="fw-bold">Dolphin Cayman</h6>
+                        <p>Dolphin Cayman is the highest performance Dolphin pool robot under $900. The high value Dolphin Cayman helps you get the most out of your pool robot. Dolphin Cayman is a great choice for pools up to 30 feet. Not only is Cayman cost-effective and energy-saving, it is the winner of best filtration options in its class. You can upgrade Cayman to Nanofiltration at purchase or anytime for only $149.</p>
+                      </div>
+                      <div class="fw-bold">$149</div>
+                      <a class="product_more" href="#">Learn More</a>
+                    </div>
+                  </div>
+                  <div class="col-md-3 dolphin_escape product">
+                    <div class="product_type">
+                      <div
+                        class="product_head d-flex justify-content-between align-items-center mb-4"
+                      >
+                        <i class="fa fa-wifi"></i>
+                        <div
+                          class="product-tile-top d-flex justify-content-between align-items-center"
+                        >
+                          <div class="product-tile-top-match">
+                            <img
+                              class="icon-top-match mr-1"
+                              src="Images/okay.png"
+                              alt="Top Match"
+                            />
+                            Top Match For You
+                          </div>
+                        </div>
+                      </div>
+                      <div class="image-container">
+                        <a href="#" target="_blank">
+                          <img class="dolphin_escape_img" src="Images/machine.png" alt="" />
+                        </a>
+                      </div>
+                      <div class="tile-body">
+                        <h6 class="fw-bold">Dolphin Escape</h6>
+                        <p>Dolphin Escape is the highest performance above ground pool robot in the Dolphin lineup. It’s easy to see why. First, the high value Dolphin Escape wins the under $650 category. Not only is Escape cost-effective and energy-saving, its capable of running Nanofiltration. You can upgrade to Nanofilter for only $149 at purchase or anytime.</p>
+                      </div>
+                      <div class="fw-bold">$149</div>
+                      <a class="product_more" href="#">Learn More</a>
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--  -->
+
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"
+      integrity="sha512-57oZ/vW8ANMjR/KQ6Be9v/+/h6bq9/l3f0Oc7vn6qMqyhvPd1cvKBRWWpzu0QoneImqr2SkmO4MSqU+RpHom3Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script>
+    </script>
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
