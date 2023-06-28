@@ -194,4 +194,8 @@ $(document).ready(function () {
         }
       });
   });
+  // result
+  $("#filtered_result").on('click',function(){
+    $(this).closest('div').parent().removeClass('show').prev().addClass('show');
+  });
 });
