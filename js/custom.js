@@ -68,12 +68,14 @@ $(document).ready(function () {
     max: valMap.length - 1,
     min: 0,
     create: function (event, ui) {
-      $(".resolution-preview").html(valMap[0]);
+      // $(".resolution-preview").html(valMap[0]);
+      $(".resolution-preview").val(valMap[0]);
       updateNextButtonClass(valMap[0]);
     },
     slide: function (event, ui) {
       var sliderWidth = (ui.value / (valMap.length - 1)) * 100 + "%";
-      $(".resolution-preview").html(valMap[ui.value]);
+      // $(".resolution-preview").html(valMap[ui.value]);
+      $(".resolution-preview").val(valMap[ui.value]);
       $(".range_slider_count span").html(valMap[ui.value] + "ft.");
       $(".ui-slider-range").css("width", sliderWidth);
       updateNextButtonClass(valMap[ui.value]);

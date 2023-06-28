@@ -8,7 +8,7 @@ const floorType = (arg) => {floor_type = arg;}
 const shapePool = (arg) => {pool_shape = arg;}
 const dirtAndDebris = (arg) => {dirt_and_debris = arg;}
 const getDimentions = (obj) => {
-    dimention = $("#resolution-preview").text(); 
+    dimention = $("#resolution-preview").val(); 
 }
 
 $("#submitForm").on('click',(e) => {
@@ -42,7 +42,7 @@ $("#submitForm").on('click',(e) => {
             $(".dolphin_cayman").find(".dolphin_cayman_img").attr("src","Images/cayman.jpg");
         }
 
-        if(pool_type == "Above ground" && (floor_type == "Floor")){
+        if(pool_type == "Above ground"){
 
             $(".dolphin_escape").removeClass("product");
             $(".dolphin_escape").find(".dolphin_escape_img").attr("src","Images/escape.jpg");
