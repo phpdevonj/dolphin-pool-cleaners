@@ -200,6 +200,6 @@ $(document).ready(function () {
   });
 });
 
-$("#resolution-preview").blur(function(){
+$("#resolution-preview").keyup(function(){
   let check = ($(this).val() > 0) ? $("button#dimension").removeClass('disable') :  $("button#dimension").addClass('disable'); 
 })
