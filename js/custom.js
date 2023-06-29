@@ -199,3 +199,7 @@ $(document).ready(function () {
     $(this).closest('div').parent().removeClass('show').prev().addClass('show');
   });
 });
+
+$("#resolution-preview").blur(function(){
+  let check = ($(this).val() > 0) ? $("button#dimension").removeClass('disable') :  $("button#dimension").addClass('disable'); 
+})
