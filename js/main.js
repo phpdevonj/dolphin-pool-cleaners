@@ -49,6 +49,48 @@ $("#submitForm").on('click',(e) => {
         }
 
         $('#product_list').find('.product').hide();
+        var products = [];
+        var i = 0;
+        let productName =$("#product_list").children('.col-md-3').not('.product');
+        $(productName).each(function() { 
+            products[i] = $(this).attr("data-attr");
+            i++;
+        });
+
+        var userIP;
+        $.ajax({
+            url: "http://jsonip.com",
+            async: false,
+            dataType: "json",
+            success: function (data) {
+                userIP = data.ip;
+            }
+        });
+        var dateObj = new Date();
+        var month = dateObj.getUTCMonth() + 1;
+        var day = dateObj.getUTCDate();
+        var year = dateObj.getUTCFullYear();
+
+        date = month + "/" + day + "/" + year;
+        let formData = {
+            "Date" : date,
+            "IP Address" : userIP,
+            "Inground or Above" : pool_type,
+            "Shape" : pool_shape,
+            "Max Dimention" : dimention,
+            "Capability (Floor Wall Waterline) " : floor_type,
+            "Dirt Type" : dirt_and_debris,
+            "Recommended Units":products.toString(),
+         }
+        jQuery.ajax({
+			url:'https://script.google.com/macros/s/AKfycbw8RDNvr-qF8M84e0bPSo5789Uca41Wss8pPlekuk3eBwj94x33nhcC56kVpDtWMXevtA/exec',
+			type:'post',
+			data:formData,
+			success:function(result){
+                console.log('respo++++');
+                console.log(result);
+			}
+		});
 });
 
 

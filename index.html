@@ -40,7 +40,7 @@
                 <h5 class="text-center heading">Inground OR Above Ground</h5>
                 <div class="card-body">
                   <ul class="values" id="pooltype">
-                    <li>
+                    <li class="inabove_ground">
                       <button onclick="poolType(this)" data-attr="Inground" type="button" class="">
                         <label class="control-container">
                           <img src="Images/in_ground.png" />
@@ -48,7 +48,7 @@
                         <span class="w-100 pool_type" id="Inground"> In Ground </span>
                       </button>
                     </li>
-                    <li>
+                    <li class="inabove_ground">
                       <button onclick="poolType(this)" data-attr="Above ground" type="button" class="">
                         <label class="control-container">
                           <img src="Images/above_ground.png" />
@@ -226,7 +226,7 @@
                 </h5>
                 <div class="card-body">
                   <ul class="values">
-                    <li>
+                    <li class="dirt_and_debris">
                       <button onclick="dirtAndDebris('Large')" type="button" class="">
                         <label class="control-container">
                           <img src="Images/large-particles.jpg" />
@@ -236,7 +236,7 @@
                         </span>
                       </button>
                     </li>
-                    <li>
+                    <li class="dirt_and_debris">
                       <button onclick='dirtAndDebris("Small")' type="button" class="">
                         <label class="control-container">
                           <img src="Images/small-large-particles.jpg" />
@@ -278,7 +278,7 @@
                   </ul>
                 </div>
                 <div class="row mt-4" id="product_list">
-                  <div class="col-md-3 dolphin_premier product">
+                  <div class="col-md-3 dolphin_premier product" data-attr="Dolphin Premier">
                     <div class="product_type">
                       <div
                         class="product_head d-flex justify-content-between align-items-center mb-4"
@@ -310,7 +310,7 @@
                       <a class="product_more" href="#">Learn More</a>
                     </div>
                   </div>
-                  <div class="col-md-3 dolphin_sigma product">
+                  <div class="col-md-3 dolphin_sigma product" data-attr="Dolphin Sigma">
                     <div class="product_type">
                       <div
                         class="product_head d-flex justify-content-between align-items-center mb-4"
@@ -342,7 +342,7 @@
                       <a class="product_more" href="#">Learn More</a>
                     </div>
                   </div>
-                  <div class="col-md-3 dolphin_quantum product">
+                  <div class="col-md-3 dolphin_quantum product" data-attr="Dolphin Quantum">
                     <div class="product_type">
                       <div
                         class="product_head d-flex justify-content-between align-items-center mb-4"
@@ -374,7 +374,7 @@
                       <a class="product_more" href="#">Learn More</a>
                     </div>
                   </div>
-                  <div class="col-md-3 dolphin_cayman product">
+                  <div class="col-md-3 dolphin_cayman product" data-attr="Dolphin Cayman">
                     <div class="product_type">
                       <div
                         class="product_head d-flex justify-content-between align-items-center mb-4"
@@ -406,7 +406,7 @@
                       <a class="product_more" href="#">Learn More</a>
                     </div>
                   </div>
-                  <div class="col-md-3 dolphin_escape product">
+                  <div class="col-md-3 dolphin_escape product" data-attr="Dolphin Escape">
                     <div class="product_type">
                       <div
                         class="product_head d-flex justify-content-between align-items-center mb-4"

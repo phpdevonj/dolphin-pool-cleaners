@@ -1,16 +1,26 @@
 $(document).ready(function () {
-  $(".values li").click(function () {
-    $(".values li").removeClass("active");
+  $(".values .inabove_ground").click(function () {
+    $(".values .inabove_ground").removeClass("active");
     $(this).addClass("active");
-    $(this)
+    commandCode($(this));
+  });
+
+  $(".values .dirt_and_debris").click(function () {
+    $(".values .dirt_and_debris").removeClass("active");
+    $(this).addClass("active");
+    commandCode($(this));
+  });
+
+  function commandCode($param){
+     $param
       .closest(".wizard-fieldset")
       .find(".form-wizard-next-btn")
       .removeClass("disable");
-    $(this)
+    $param
       .closest(".wizard-fieldset")
       .find(".form-wizard-submit")
       .removeClass("disable");
-  });
+  }
   // next button
   $(".form-wizard-next-btn,.form-wizard-submit").click(function () {
     var currentFieldset = $(this).closest(".wizard-fieldset");
@@ -18,7 +28,7 @@ $(document).ready(function () {
     currentFieldset.next(".wizard-fieldset").addClass("show");
   });
   $(".form-wizard-submit").click(function () {
-    $(".form-wizard-header").addClass("d-none");
+    let check = ($(this).closest('div').parent().next().hasClass('show')) ? $(".form-wizard-header").addClass("d-none") : '';
   });
   // previous button
   $(".form-wizard-previous-btn").click(function () {
@@ -28,8 +38,11 @@ $(document).ready(function () {
   });
 
   $(".round_rectangle .tab_btn li").click(function () {
-    // Remove 'active' class from all images
-    $(".round_rectangle .card-default-image img").removeClass("active");
+
+     if (!$(this).hasClass("active")) {
+      // Remove 'active' class from all images
+      $(".round_rectangle .card-default-image img").removeClass("active");
+    }
     // Get the class of the clicked button's parent li
     var selectedShape = $(this).attr("class");
     // Add 'active' class to the corresponding image
@@ -42,8 +55,10 @@ $(document).ready(function () {
       .removeClass("disable");
   });
   $(".floor_wall .tab_btn li").click(function () {
-    // Remove 'active' class from all images
-    $(".floor_wall .card-default-image img").removeClass("active");
+    if (!$(this).hasClass("active")) {
+      // Remove 'active' class from all images
+      $(".floor_wall .card-default-image img").removeClass("active");
+    }
     // Get the class of the clicked button's parent li
     var selectedShape = $(this).attr("class");
     // Add 'active' class to the corresponding image
@@ -56,7 +71,8 @@ $(document).ready(function () {
       .removeClass("disable");
   });
   $(".tab_btn li").click(function () {
-    $(".tab_btn li").removeClass("active"); // Remove active class from all li elements
+    let temp = $(this).parent().parent().attr('class');
+    $("."+temp+" .tab_btn li").removeClass("active"); // Remove active class from all li elements
     $(this).addClass("active"); // Add active class to the clicked li element
   });
   //   range slider
@@ -196,7 +212,8 @@ $(document).ready(function () {
   });
   // result
   $("#filtered_result").on('click',function(){
-    $(this).closest('div').parent().removeClass('show').prev().addClass('show');
+    $(this).closest('div').parent().removeClass('show').prev().addClass('show')
+    $('.form-wizard-header').removeClass('d-none')
   });
 });
 
