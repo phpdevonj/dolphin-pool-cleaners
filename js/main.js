@@ -2,13 +2,13 @@ var pool_type = '';
 var floor_type = '';
 var pool_shape = '';
 var dirt_and_debris = '';
-var dimention = '';
+var dimension = '';
 const poolType = (obj) => {pool_type = $(obj).attr('data-attr');}
 const floorType = (arg) => {floor_type = arg;}
 const shapePool = (arg) => {pool_shape = arg;}
 const dirtAndDebris = (arg) => {dirt_and_debris = arg;}
-const getDimentions = (obj) => {
-    dimention = $("#resolution-preview").val(); 
+const getDimensions = (obj) => {
+    dimension = $("#resolution-preview").val();
 }
 
 $("#submitForm").on('click',(e) => {
@@ -17,7 +17,11 @@ $("#submitForm").on('click',(e) => {
         $("#poolShape").html(floor_type);
         $("#poolCoverage").html(pool_shape);
         $("#poolControl").html(dirt_and_debris);
-        $("#poolSize").html(dimention);
+        $("#poolSize").html(dimension);
+
+        $('#product_list').children('.col-md-3').removeClass('product')
+        $('#product_list').children('.col-md-3').addClass('product')
+        $('#product_list').children('.col-md-3').attr('style', '')
 
         if(pool_type == "Inground" && (floor_type == "Floor" || floor_type == "Floor and Walls" || floor_type == "Floor, Walls and Waterline") && (dirt_and_debris == "Large" || dirt_and_debris == "Small")){
             $(".dolphin_premier").removeClass("product");
@@ -77,10 +81,10 @@ $("#submitForm").on('click',(e) => {
             "IP Address" : userIP,
             "Inground or Above" : pool_type,
             "Shape" : pool_shape,
-            "Max Dimention" : dimention,
+            "Max Dimention" : dimension,
             "Capability (Floor Wall Waterline) " : floor_type,
             "Dirt Type" : dirt_and_debris,
-            "Recommended Units":products.toString(),
+            "Recommended Units" : products.toString(),
          }
         jQuery.ajax({
 			url:'https://script.google.com/macros/s/AKfycbw8RDNvr-qF8M84e0bPSo5789Uca41Wss8pPlekuk3eBwj94x33nhcC56kVpDtWMXevtA/exec',
@@ -92,5 +96,3 @@ $("#submitForm").on('click',(e) => {
 			}
 		});
 });
-
-
